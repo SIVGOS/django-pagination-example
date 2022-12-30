@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <title>Demo APP</title>
+</head>
+<body>
+    {% block content %} 
+    <div style="font-size: 30px; margin-left: 20%; margin-top: 100px;">
+        <input id="input" type="text"> <br><br>
+        <button id="button1" type="button">Click Here</button> <br>
+        <div id="display" hidden=true>Hi <span id="output"></span><div>
+    </div>
+    {% endblock %} 
+
+</body>
+<script src={% static 'js/script.js'%}></script>

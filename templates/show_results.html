@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+  <title>Demo APP</title>
+  <link href={% static 'css/bootstrap.min.css' %} rel="stylesheet">
+  <link href={% static 'css/mystyle.css' %} rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="main-content conf-margin">
+    <div class="d-flex my-search-bar">
+      <input id="searchbox" type="text" class="form-control me-2">
+      <button id="searchbtn" class="btn btn-primary">Search</button>
+    </div>
+    <div class="table-space">
+      <table class="table table-bordered table-striped sortable">
+        <thead>
+          <tr>
+            <th class="table-head">Index</th>
+            <th class="table-head" onclick="sortTable('city')">City  <i id="icon_city" class="fa fa-fw fa-sort"></i></th>
+            <th class="table-head" onclick="sortTable('state')">State  <i id="icon_state" class="fa fa-fw fa-sort"></i></th>
+            <th class="table-head" onclick="sortTable('population')">Population  <i id="icon_population" class="fa fa-fw fa-sort"></i></th>
+            <th class="table-head" onclick="sortTable('metropolitan')">Metropolitan  <i id="icon_metropolitan" class="fa fa-fw fa-sort"></i></th>
+            <th class="table-head" onclick="sortTable('sex_ratio')">Sex Ratio  <i id="icon_sex_ratio" class="fa fa-fw fa-sort"></i></th>
+            <th class="table-head" onclick="sortTable('literacy')">Literacy  <i id="icon_literacy" class="fa fa-fw fa-sort"></i></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for city in cities %}
+          <tr>
+            <td>{{city.index}}</td>
+            <td>{{city.city}}</td>
+            <td>{{city.state}}</td>
+            <td>{{city.population}}</td>
+            <td>{{city.metropolitan}}</td>
+            <td>{{city.sex_ratio}}</td>
+            <td>{{city.literacy}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px; display: flex; justify-content: center">
+    <ul class="pagination">
+      {% if current_page > 1 %}
+      <li class="page-item"><a class="page-link" href="{{page_url_prefix}}{{prev_page_number}}">Previous</a></li>
+      {% endif %}
+      {% for p in pages %}
+        {% if p == current_page %}
+        <li class="page-item active"><span class="page-link">{{p}}<span class="sr-only"></span></span></li>
+        {% else %}
+            <li class="page-item"><a class="page-link" href="{{page_url_prefix}}{{p}}">{{p}}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if current_page < page_count %}
+      <li class="page-item"><a class="page-link" href="{{page_url_prefix}}{{next_page_number}}">Next</a></li>
+      {% endif %}
+    </ul>
+</div>
+
+</body>
+<script src={% static 'js/cityScript.js' %}></script>

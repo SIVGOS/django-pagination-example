@@ -1,0 +1,18 @@
+.main-content{
+    margin-top: 20px;
+    margin-right: 100px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+.my-search-bar{
+    margin-left: 50%;
+}
+.table-space{
+    margin-top: 20px;
+}
+
+.table-head:hover{
+    color: peachpuff;
+    background-color: gray;
+    cursor: pointer;
+}
