@@ -23,7 +23,7 @@ python manage.py migrate
 ```
 ### Load Population dataset to the SQLITE Database
 ```
-python manage.py < load_data.py
+python manage.py shell < load_data.py
 ```
 
 ### Start the server
